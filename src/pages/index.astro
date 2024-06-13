@@ -1,8 +1,11 @@
 ---
+import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Greeting from "../components/Greeting";
 const pageTitle = "Página de inicio";
 ---
 
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -11,9 +14,13 @@ const pageTitle = "Página de inicio";
     <title>{pageTitle}</title>
   </head>
   <body>
-    <a href="/">Inicio</a>
-    <a href="/about/">Sobre mi</a>
-    <a href="/blog/">Blog</a>
-    <h1></h1>{pageTitle}</body
-  >
+    <BaseLayout pageTitle={pageTitle}>
+      <h2>Mi impresionante subtítulo del blog</h2>
+      <!-- Usando un componente hidratado con client:load -->
+      <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+    </BaseLayout>
+    <script>
+      import "../scripts/menu.ts";
+    </script>
+  </body>
 </html>
